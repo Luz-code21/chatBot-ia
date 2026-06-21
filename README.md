@@ -4,6 +4,11 @@
 > Escuela Profesional de Ingeniería Informática y de Sistemas
 
 ---
+Chatbot académico de recuperación de información (BM25 + similitud
+coseno) para responder consultas frecuentes de estudiantes y docentes
+de la EPIIS sobre tutoría, malla curricular, prácticas pre
+profesionales, becas, matrícula y trámites académicos. 100 % en el
+navegador.
 
 ## Inicio rápido
 
@@ -36,9 +41,6 @@ proyecto_ia/
 ├── docs/                       Documentación técnica del sistema
 
 └── fuentes/                     Trazabilidad del corpus a la normativa UNSAAC
-
-**Nota:** el repositorio también contiene `config.js`, `firebase-config.js` y `codigo.txt`. Ninguno de los tres está conectado al sistema en producción: los dos primeros son de un intento de login con Google que no se llegó a integrar (`index.html` no los referencia), y `codigo.txt` es un prototipo alterno en Python/Colab. Si no se van a retomar, conviene eliminarlos para no confundir a quien lea el código.
-
 ---
 
 ## Autenticación
