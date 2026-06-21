@@ -1,78 +1,72 @@
-# Repositorio de Conocimientos — Tutoris
+# 🎓 Tutoris — Asistente Académico UNSAAC
 
-Repositorio de conocimiento de la Escuela Profesional de Ingeniería
-Informática y de Sistemas (EPIIS) — Universidad Nacional de San Antonio
-Abad del Cusco (UNSAAC), construido para el chatbot **Tutoris**.
+> **Universidad Nacional San Antonio Abad del Cusco**  
+> Escuela Profesional de Ingeniería Informática y de Sistemas
 
-Este repositorio implementa el almacenamiento, la organización y la
-trazabilidad del conocimiento institucional (normativa de tutorías,
-malla curricular, prácticas pre profesionales, becas, trámites
-académicos, etc.) que el chatbot consulta mediante un motor de
-recuperación basado en TF-IDF y similitud coseno.
+---
 
-## Estructura
+## ⚡ Inicio rápido
+
+### Modo local (prueba rápida)
+1. Instala la extensión **Live Server** en VS Code  
+2. Abre la carpeta del proyecto en VS Code  
+3. Click derecho en `index.html` → **"Open with Live Server"**  
+4. Usa el botón **"Continuar como invitado"** para probar sin Firebase
+
+> ⚠️ **No abras el archivo directamente** en el navegador (doble clic).  
+> El `fetch('corpus.txt')` necesita un servidor HTTP. Usa Live Server o similar.
+
+---
+
+
+## 📁 Estructura de archivos
 
 ```
-tutoris-repositorio-conocimiento/
-├── corpus.txt              ← Corpus completo (el que usa nlp-engine.js, sin modificar)
-├── corpus/                 ← El mismo corpus, dividido por categoría temática
-│   ├── 01_tutoria_academica.txt
-│   ├── 02_practicas_pre_profesionales.txt
-│   ├── 03_malla_curricular.txt
-│   ├── 04_bienestar_universitario.txt
-│   ├── 05_movilidad_estudiantil.txt
-│   ├── 06_becas.txt
-│   ├── 07_matricula.txt
-│   ├── 08_matricula_condicionada.txt
-│   ├── 09_evaluacion_aprendizaje.txt
-│   ├── 10_convalidacion.txt
-│   ├── 11_grados_titulos.txt
-│   └── 12_cursos_desaprobados.txt
-├── fuentes/
-│   ├── fuentes.json                       ← Trazabilidad: categoría → documento normativo
-│   ├── Estatuto_UNSAAC_2022.pdf           ← Incluido
-│   ├── Reglamento_Tutorias_UNSAAC.pdf     ← Pendiente de agregar
-│   ├── Plan_Curricular_2024_EPIIS.pdf     ← Pendiente de agregar
-│   └── Reglamento_Academico_UNSAAC.pdf    ← Pendiente de agregar
-├── docs/
-│   └── documentacion_tecnica_tutoris.md   ← Arquitectura, motor NLP, componentes del sistema
-└── src/                                    ← Código fuente del chatbot (pendiente de agregar)
+proyecto_ia/
+├── index.html          # Página de login (Google + email + invitado)
+├── chat.html           # Interfaz principal del chatbot
+├── styles.css          # Diseño glassmorphism dark mode
+├── nlp-engine.js       # Motor TF-IDF en JavaScript puro
+├── speech.js           # Reconocimiento y síntesis de voz
+├── firebase-config.js  # Referencia de configuración Firebase
+├── corpus.txt          # Corpus académico UNSAAC (fuente del conocimiento)
+└── assets/
+    └── logo.png        # Logo Tutoris
 ```
 
-## ¿Por qué dos versiones del corpus?
+---
 
-- **`corpus.txt`** es el archivo único que consume `nlp-engine.js` en
-  tiempo de ejecución (no se modifica, para no romper el sistema ya
-  desplegado).
-- **`corpus/`** es la misma información dividida por categoría, pensada
-  para la documentación, el mantenimiento y la trazabilidad: facilita
-  ubicar y actualizar el conocimiento de un tema específico sin tener
-  que editar un archivo de más de 1300 líneas.
+## 🎤 Funciones de voz
 
-## Fuentes oficiales
+- **Entrada de voz**: Funciona en Chrome y Edge (escritorio y Android)
+- **Salida de voz**: Funciona en todos los navegadores modernos
+- El icono de **🔊** activa/desactiva las respuestas de voz
+- El botón de **🎙️** activa el micrófono
 
-El conocimiento de este repositorio proviene de cuatro documentos
-normativos de la UNSAAC:
+---
 
-1. **Estatuto Universitario** (actualizado, 2022) — incluido en `fuentes/`.
-2. **Reglamento de Tutorías** — pendiente de agregar.
-3. **Plan Curricular 2024 - EPIIS** — pendiente de agregar.
-4. **Reglamento Académico** — pendiente de agregar.
+## 🧠 Cómo funciona el NLP
 
-`fuentes/fuentes.json` mapea cada categoría del corpus a su fuente
-normativa principal. Las categorías derivadas directamente del Estatuto
-(matrícula condicionada, cursos desaprobados) están verificadas línea
-por línea contra el PDF incluido; las demás están asignadas por tema y
-deben verificarse cuando se agreguen los 3 documentos pendientes.
+El chatbot usa un motor de recuperación de información basado en **TF-IDF + Similitud Coseno**, implementado completamente en JavaScript:
 
-## Componente sensible: matrícula condicionada y cursos desaprobados
+1. Al cargar, hace `fetch('corpus.txt')` y tokeniza el texto en ~1,500+ oraciones
+2. Construye un índice invertido con pesos TF-IDF por término
+3. Cuando el usuario escribe, vectoriza su consulta con los mismos pesos
+4. Calcula la similitud coseno con todas las oraciones del corpus
+5. Devuelve la oración con mayor similitud (si supera el umbral mínimo)
 
-Las categorías `08_matricula_condicionada.txt` y
-`12_cursos_desaprobados.txt` documentan el régimen de consecuencias por
-desaprobación reiterada de una asignatura (Art. 214° del Estatuto): desde
-la asignación obligatoria de un tutor hasta la suspensión o separación
-del estudiante. Esta información es la base normativa del problema
-descrito en el artículo del proyecto (Sección I-B): la tutoría no solo
-implica orientación académica general, sino también una posible
-exposición de información sensible para el estudiante.
+**Sin APIs de pago. Sin servidor. 100% local en el navegador.**
 
+---
+
+## 🐛 Solución de problemas
+
+| Problema | Solución |
+|----------|----------|
+| "No se pudo cargar corpus.txt" | Usa un servidor web (Live Server), no abras el archivo directamente |
+| Google login no funciona | Verifica la configuración de Firebase y dominios autorizados |
+| La voz no funciona | Usa Chrome o Edge. En móvil: Chrome Android |
+| El chat no responde | Espera a que el loader desaparezca (1-3s para procesar el corpus) |
+| Error CORS | Sirve desde un servidor HTTP, no desde `file://` |
+
+---
