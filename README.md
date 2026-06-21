@@ -76,10 +76,3 @@ descrito en el artículo del proyecto (Sección I-B): la tutoría no solo
 implica orientación académica general, sino también una posible
 exposición de información sensible para el estudiante.
 
-## Pendiente
-
-- [ ] Agregar `Reglamento_Tutorias_UNSAAC.pdf`, `Plan_Curricular_2024_EPIIS.pdf`
-      y `Reglamento_Academico_UNSAAC.pdf` a `fuentes/`.
-- [ ] Verificar y ajustar `fuentes.json` con la fuente exacta de cada
-      categoría una vez agregados esos documentos.
-- [ ] Agregar el código fuente del chatbot en `src/` (ver `src/README.md`).
