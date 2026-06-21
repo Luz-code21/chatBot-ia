@@ -1,0 +1,107 @@
+!pip install gTTS
+
+import re
+import string
+import random
+import nltk
+import time
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from nltk.corpus import stopwords
+from nltk.stem import SnowballStemmer
+from gtts import gTTS
+from IPython.display import Audio, display
+
+nltk.download('punkt')
+nltk.download('punkt_tab') # <--- ¡Agrega esta línea!
+nltk.download('stopwords')
+
+stemmer = SnowballStemmer('spanish')
+
+def StemTokens(tokens):
+    return [stemmer.stem(token) for token in tokens]
+
+remove_punct_dict = dict((ord(punct), None) for punct in string.punctuation)
+
+def StemNormalize(text):
+    return StemTokens(nltk.word_tokenize(text.lower().translate(remove_punct_dict)))
+
+
+print("Cargando y procesando el corpus de la UNSAAC...")
+with open('corpus_unsaac.txt', 'r', encoding='utf-8', errors='ignore') as archivo:
+    raw = archivo.read().lower()
+
+
+# ELIMINAR LAS ETIQUETAS (Reescrito para evitar errores de sintaxis al copiar)
+raw = re.sub('\\+\\]', '', raw)
+
+# Tokenizar en oraciones
+sent_tokens = nltk.sent_tokenize(raw)
+
+
+# ELIMINAR LAS ETIQUETAS (Reescrito para evitar errores de sintaxis al copiar)
+raw = re.sub('\\+\\]', '', raw)
+
+# Tokenizar en oraciones
+sent_tokens = nltk.sent_tokenize(raw)
+
+
+TfidfVec = TfidfVectorizer(tokenizer=StemNormalize, stop_words=stopwords.words('spanish'))
+tfidf_corpus_matrix = TfidfVec.fit_transform(sent_tokens)
+print("¡Corpus procesado exitosamente! El bot está listo.")
+
+def response(user_response):
+    tfidf_user_query = TfidfVec.transform([user_response])
+    vals = cosine_similarity(tfidf_user_query, tfidf_corpus_matrix)
+    
+    idx = vals.argsort()[0][-1]
+    flat = vals.flatten()
+    flat.sort()
+    req_tfidf = flat[-1]
+
+    if (req_tfidf == 0):
+        return "Lo siento, no encontré información exacta sobre eso en el reglamento o la malla curricular. Te sugiero consultar directamente con tu Escuela Profesional o Bienestar Universitario."
+    else:
+        return sent_tokens[idx].strip().capitalize()
+
+SALUDOS_INPUTS = ("hola", "buenas", "saludos", "qué tal", "hey", "buenos días", "buenas tardes")
+SALUDOS_OUTPUTS = ["Hola, ¿Qué tal?", "Hola, ¿Cómo te puedo ayudar con tu carrera?", "¡Hola! Pregúntame sobre reglamentos, becas o cursos."]
+
+def saludos(sentence):
+    for word in sentence.split():
+        if word.lower() in SALUDOS_INPUTS:
+            return random.choice(SALUDOS_OUTPUTS)
+
+def reproducir(texto):
+    print("\nBot UNSAAC:", texto)
+    gtts_object = gTTS(text=texto, lang="es")
+    gtts_object.save("mensaje.mp3")
+    display(Audio("mensaje.mp3", autoplay=True))
+    
+    tiempo_estimado = len(texto) / 13 
+    time.sleep(max(1.5, tiempo_estimado))
+
+
+# ==========================================
+# PROGRAMA PRINCIPAL (BUCLE DE CHAT)
+# ==========================================
+flag = True
+reproducir('Hola, soy tu asistente virtual. Te ayudaré a resolver dudas sobre reglamentos, tutorías, movilidad y la malla curricular.')
+reproducir('Si ya no deseas continuar, escribe salir, adios o chau.')
+
+while (flag == True):
+    user_response = input("\nTú: ").lower()
+
+    if user_response not in ['salir', 'adios', 'chau', 'adiós']:
+        if (user_response == 'gracias' or user_response == 'muchas gracias'):
+            reproducir('No hay de qué, ¡éxitos en tus estudios!')
+        else:
+            respuesta_saludo = saludos(user_response)
+            if respuesta_saludo:
+                reproducir(respuesta_saludo)
+            else:
+                respuesta_bot = response(user_response)
+                reproducir(respuesta_bot)
+    else:
+        flag = False
+        reproducir('Nos vemos pronto, ¡Cuídate y éxito en tu semestre!')

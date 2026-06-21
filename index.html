@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tutoris | Asistente Académico UNSAAC</title>
+  <meta name="description" content="Tutoris — Asistente académico virtual de la UNSAAC para estudiantes de Ingeniería Informática y de Sistemas.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+  <style>
+    /* ── Inputs con micrófono ──────────────────────────────────── */
+    .input-mic-row {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+    }
+    .input-mic-row .input-field { flex: 1; }
+
+    .mic-btn-inline {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      font-size: 1rem;
+      align-self: flex-end;
+    }
+    .mic-btn-inline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-dim);
+    }
+    .mic-btn-inline.listening {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+      animation: pulse-mic 1.2s ease-in-out infinite;
+    }
+
+    /* ── Badge de modo ─────────────────────────────────────────── */
+    .voice-hint {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 2px;
+    }
+    .voice-transcript {
+      font-size: 0.78rem;
+      color: var(--cyan);
+      min-height: 18px;
+      margin-top: 4px;
+      transition: var(--transition);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Fondo animado -->
+<div class="bg-canvas">
+  <div class="bg-grid"></div>
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+</div>
+
+<!-- Página principal de login -->
+<main class="login-page" id="loginPage">
+  <div class="login-container">
+    <div class="glass-card login-card">
+
+      <!-- Logo y título -->
+      <div class="login-header">
+        <div class="login-logo">🎓</div>
+        <h1 class="login-title">Tutoris</h1>
+        <p class="login-subtitle">Asistente Académico · UNSAAC</p>
+      </div>
+
+      <!-- Tabs: Crear cuenta (por defecto) | Iniciar sesión -->
+      <div class="login-tabs" role="tablist">
+        <button class="login-tab active" id="tabRegister"
+          onclick="switchTab('register')" role="tab" aria-selected="true">
+          Crear cuenta
+        </button>
+        <button class="login-tab" id="tabLogin"
+          onclick="switchTab('login')" role="tab" aria-selected="false">
+          Iniciar sesión
+        </button>
+      </div>
+
+      <!-- ── PANEL: CREAR CUENTA ─── -->
+      <div class="form-panel active" id="panelRegister">
+
+        <!-- Nombre con voz -->
+        <div class="input-group">
+          <label class="input-label" for="regName">
+            Nombre completo
+          </label>
+          <div class="input-mic-row">
+            <input type="text" id="regName" class="input-field"
+              placeholder="Ej: Juan Pérez Quispe"
+              autocomplete="name">
+            <button class="mic-btn-inline" id="micRegName"
+              onclick="voiceFill('regName', 'micRegName', 'transRegName')"
+              title="Dictar nombre con voz" aria-label="Dictar nombre">
+              🎙️
+            </button>
+          </div>
+          <div class="voice-transcript" id="transRegName"></div>
+        </div>
+
+        <!-- Correo con voz -->
+        <div class="input-group">
+          <label class="input-label" for="regEmail">
+            Correo electrónico
+          </label>
+          <div class="input-mic-row">
+            <input type="email" id="regEmail" class="input-field"
+              placeholder="tu@correo.com"
+              autocomplete="email">
+            <button class="mic-btn-inline" id="micRegEmail"
+              onclick="voiceFill('regEmail', 'micRegEmail', 'transRegEmail')"
+              title="Dictar correo con voz" aria-label="Dictar correo">
+              🎙️
+            </button>
+          </div>
+          <div class="voice-transcript" id="transRegEmail"></div>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="input-group">
+          <label class="input-label" for="regPassword">Contraseña</label>
+          <input type="password" id="regPassword" class="input-field"
+            placeholder="Mínimo 6 caracteres"
+            autocomplete="new-password">
+        </div>
+
+        <!-- Confirmar contraseña -->
+        <div class="input-group">
+          <label class="input-label" for="regPasswordConfirm">Confirmar contraseña</label>
+          <input type="password" id="regPasswordConfirm" class="input-field"
+            placeholder="Repite tu contraseña"
+            autocomplete="new-password">
+        </div>
+
+        <div class="error-msg" id="registerError" role="alert"></div>
+
+        <button class="btn btn-gold btn-full" id="btnRegister" onclick="doRegister()">
+          Crear cuenta
+        </button>
+
+        <p class="voice-hint" style="justify-content:center; margin-top:4px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+          </svg>
+          Puedes dictar tu nombre y correo con el micrófono 🎙️
+        </p>
+      </div>
+
+      <!-- ── PANEL: INICIAR SESIÓN ─── -->
+      <div class="form-panel" id="panelLogin">
+
+        <!-- Correo con voz -->
+        <div class="input-group">
+          <label class="input-label" for="loginEmail">Correo electrónico</label>
+          <div class="input-mic-row">
+            <input type="email" id="loginEmail" class="input-field"
+              placeholder="tu@correo.com"
+              autocomplete="email">
+            <button class="mic-btn-inline" id="micLoginEmail"
+              onclick="voiceFill('loginEmail', 'micLoginEmail', 'transLoginEmail')"
+              title="Dictar correo con voz" aria-label="Dictar correo">
+              🎙️
+            </button>
+          </div>
+          <div class="voice-transcript" id="transLoginEmail"></div>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="input-group">
+          <label class="input-label" for="loginPassword">Contraseña</label>
+          <input type="password" id="loginPassword" class="input-field"
+            placeholder="Tu contraseña"
+            autocomplete="current-password">
+        </div>
+
+        <div class="error-msg" id="loginError" role="alert"></div>
+
+        <button class="btn btn-gold btn-full" id="btnLogin" onclick="doLogin()">
+          Iniciar sesión
+        </button>
+      </div>
+
+      <!-- Divider + Invitado -->
+      <div class="divider" style="margin-top:16px;">
+        <span class="divider-text">o acceso rápido</span>
+      </div>
+
+      <button class="btn btn-glass btn-full" id="btnGuest" onclick="doGuest()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        Continuar como invitado
+      </button>
+
+      <div class="unsaac-badge">
+        Plataforma académica oficial de<br>
+        <span>Universidad Nacional San Antonio Abad del Cusco</span>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   TUTORIS — Autenticación local (sin Firebase)
+   Los usuarios se guardan en localStorage del navegador.
+   ============================================================ */
+
+const ACCOUNTS_KEY = 'tutoris_accounts_v1';
+
+// ── Leer / guardar cuentas ────────────────────────────────────
+function getAccounts() {
+  try { return JSON.parse(localStorage.getItem(ACCOUNTS_KEY) || '{}'); }
+  catch(e) { return {}; }
+}
+
+// Hash simple (base64). Para un chatbot informativo es suficiente.
+function hashPass(str) {
+  return btoa(unescape(encodeURIComponent(str)));
+}
+
+// ── Registro ──────────────────────────────────────────────────
+window.doRegister = function() {
+  hideErrors();
+  const name  = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim().toLowerCase();
+  const pass  = document.getElementById('regPassword').value;
+  const pass2 = document.getElementById('regPasswordConfirm').value;
+
+  if (!name)  return showError('registerError', 'Ingresa tu nombre completo.');
+  if (!email) return showError('registerError', 'Ingresa tu correo electrónico.');
+  if (!isValidEmail(email)) return showError('registerError', 'El correo no es válido.');
+  if (!pass)  return showError('registerError', 'Ingresa una contraseña.');
+  if (pass.length < 6) return showError('registerError', 'La contraseña debe tener al menos 6 caracteres.');
+  if (pass !== pass2) return showError('registerError', 'Las contraseñas no coinciden.');
+
+  const accounts = getAccounts();
+  if (accounts[email]) {
+    return showError('registerError', 'Ya existe una cuenta con ese correo. Inicia sesión.');
+  }
+
+  // Guardar nueva cuenta
+  accounts[email] = { name, hash: hashPass(pass), createdAt: Date.now() };
+  localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(accounts));
+
+  // Iniciar sesión directamente
+  startSession({ name, email, isGuest: false });
+  showToast('¡Cuenta creada exitosamente! 🎉', 'success');
+};
+
+// ── Login ─────────────────────────────────────────────────────
+window.doLogin = function() {
+  hideErrors();
+  const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pass  = document.getElementById('loginPassword').value;
+
+  if (!email) return showError('loginError', 'Ingresa tu correo electrónico.');
+  if (!pass)  return showError('loginError', 'Ingresa tu contraseña.');
+
+  const accounts = getAccounts();
+  const account  = accounts[email];
+
+  if (!account) {
+    return showError('loginError', 'No existe una cuenta con ese correo. ¿Quieres crear una?');
+  }
+  if (account.hash !== hashPass(pass)) {
+    return showError('loginError', 'Contraseña incorrecta. Inténtalo de nuevo.');
+  }
+
+  startSession({ name: account.name, email, isGuest: false });
+};
+
+// ── Invitado ──────────────────────────────────────────────────
+window.doGuest = function() {
+  startSession({ name: 'Invitado', email: '', isGuest: true });
+};
+
+// ── Iniciar sesión y redirigir ────────────────────────────────
+function startSession(user) {
+  sessionStorage.setItem('tutoris_user', JSON.stringify({
+    uid:     user.email || 'guest-' + Date.now(),
+    name:    user.name,
+    email:   user.email,
+    photo:   '',
+    isGuest: user.isGuest
+  }));
+  setTimeout(() => { window.location.href = 'chat.html'; }, 200);
+}
+
+// ── Tabs ──────────────────────────────────────────────────────
+window.switchTab = function(tab) {
+  hideErrors();
+  clearTranscripts();
+  const isReg = tab === 'register';
+  document.getElementById('tabRegister').classList.toggle('active', isReg);
+  document.getElementById('tabLogin').classList.toggle('active', !isReg);
+  document.getElementById('panelRegister').classList.toggle('active', isReg);
+  document.getElementById('panelLogin').classList.toggle('active', !isReg);
+  document.getElementById('tabRegister').setAttribute('aria-selected', isReg);
+  document.getElementById('tabLogin').setAttribute('aria-selected', !isReg);
+};
+
+// ── Voz en campos de texto ────────────────────────────────────
+let activeRecognition = null;
+
+window.voiceFill = function(fieldId, btnId, transcriptId) {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    showToast('⚠️ Usa Chrome o Edge para reconocimiento de voz.', 'error');
+    return;
+  }
+
+  // Si ya está escuchando en ese campo, detener
+  if (activeRecognition) {
+    activeRecognition.stop();
+    activeRecognition = null;
+    return;
+  }
+
+  const btn = document.getElementById(btnId);
+  const transcriptEl = document.getElementById(transcriptId);
+  const field = document.getElementById(fieldId);
+
+  const rec = new SR();
+  rec.lang = 'es-PE';
+  rec.continuous = false;
+  rec.interimResults = true;
+  rec.maxAlternatives = 1;
+  activeRecognition = rec;
+
+  btn.classList.add('listening');
+  btn.textContent = '⏹';
+  transcriptEl.textContent = '🎙️ Escuchando...';
+
+  rec.onresult = (e) => {
+    const transcript = e.results[0][0].transcript;
+    const isFinal = e.results[0].isFinal;
+
+    // Para email: limpiar espacios y reemplazar "arroba" → @, "punto" → .
+    let value = transcript.trim();
+    if (fieldId.toLowerCase().includes('email')) {
+      value = value
+        .replace(/\s+arroba\s+/gi, '@')
+        .replace(/\s+at\s+/gi, '@')
+        .replace(/\s+punto\s+/gi, '.')
+        .replace(/\s/g, '');
+    }
+
+    field.value = value;
+    transcriptEl.textContent = isFinal ? `✓ "${value}"` : `🎙️ ${value}`;
+  };
+
+  rec.onerror = (e) => {
+    btn.classList.remove('listening');
+    btn.textContent = '🎙️';
+    transcriptEl.textContent = '';
+    activeRecognition = null;
+    if (e.error === 'not-allowed') {
+      showToast('🎙️ Permiso de micrófono denegado. Actívalo en el navegador.', 'error');
+    }
+  };
+
+  rec.onend = () => {
+    btn.classList.remove('listening');
+    btn.textContent = '🎙️';
+    activeRecognition = null;
+    if (field.value) {
+      setTimeout(() => { transcriptEl.textContent = ''; }, 3000);
+    }
+  };
+
+  rec.start();
+};
+
+// ── Helpers ───────────────────────────────────────────────────
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  if (el) { el.textContent = msg; el.classList.add('visible'); }
+}
+
+function hideErrors() {
+  document.querySelectorAll('.error-msg').forEach(el => {
+    el.classList.remove('visible'); el.textContent = '';
+  });
+}
+
+function clearTranscripts() {
+  document.querySelectorAll('.voice-transcript').forEach(el => el.textContent = '');
+}
+
+window.showToast = function(msg, type = 'info') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = `toast visible ${type}`;
+  setTimeout(() => t.classList.remove('visible'), 4000);
+};
+
+// ── Enter shortcuts ───────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('regPasswordConfirm').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doRegister();
+  });
+  document.getElementById('loginPassword').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+  document.getElementById('loginEmail').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('loginPassword').focus();
+  });
+
+  // Si ya hay sesión activa, redirigir
+  if (sessionStorage.getItem('tutoris_user')) {
+    window.location.href = 'chat.html';
+  }
+});
+</script>
+
+</body>
+</html>

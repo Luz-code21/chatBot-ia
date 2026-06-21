@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tutoris | Chat Académico UNSAAC</title>
+  <meta name="description" content="Chat con Tutoris, asistente académico de la UNSAAC.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body>
+
+<div class="bg-canvas">
+  <div class="bg-grid"></div>
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+</div>
+
+<div class="chat-page">
+
+  <!-- ── HEADER ── -->
+  <header class="chat-header" role="banner">
+    <div class="header-brand">
+      <div class="header-logo" aria-hidden="true">🎓</div>
+      <div>
+        <div class="header-title">Tutoris</div>
+        <span class="header-subtitle">Asistente Académico · UNSAAC</span>
+      </div>
+    </div>
+
+    <div class="header-status" id="systemStatus" aria-live="polite">
+      <div class="status-dot loading" id="statusDot"></div>
+      <span id="statusText">Iniciando...</span>
+    </div>
+
+    <div class="header-actions">
+      <!-- Botón tutor (solo usuarios autenticados) -->
+      <button class="btn btn-icon tutor-only" id="btnTutor" title="Mi tutora"
+        onclick="openTutorModal()" aria-label="Ver información de mi tutora" style="display:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </button>
+
+      <!-- Toggle voz -->
+      <button class="btn btn-icon" id="btnVoiceToggle" title="Activar/desactivar voz"
+        onclick="toggleVoiceOutput()" aria-label="Activar o desactivar voz">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="voiceIcon">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+      </button>
+
+      <!-- Avatar usuario -->
+      <button class="user-info-btn" id="userInfoBtn" onclick="showUserMenu()"
+        aria-label="Menú de usuario">
+        <div class="user-avatar-sm" id="userAvatarSm">?</div>
+        <span class="user-name-sm" id="userNameSm">...</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── CHAT MAIN ── -->
+  <main class="chat-main" role="main">
+    <!-- Loading NLP -->
+    <div class="nlp-loading" id="nlpLoading" aria-live="assertive">
+      <div class="loading-spinner" aria-hidden="true"></div>
+      <div class="loading-text">
+        <strong>Tutoris</strong> está cargando el corpus académico...<br>
+        <small style="color:var(--text-muted);">Solo tarda unos segundos</small>
+      </div>
+      <div class="loading-progress"><div class="loading-bar"></div></div>
+    </div>
+
+    <!-- Mensajes -->
+    <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Conversación"></div>
+
+    <!-- Typing indicator -->
+    <div class="typing-indicator" id="typingIndicator" aria-label="Tutoris está escribiendo">
+      <div class="msg-avatar bot" aria-hidden="true">T</div>
+      <div class="typing-dots">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── INPUT ── -->
+  <footer class="chat-input-area" role="contentinfo">
+    <div class="quick-suggestions" id="quickSuggestions">
+      <button class="suggestion-chip" onclick="sendSuggestion(this)">📚 Malla curricular</button>
+      <button class="suggestion-chip" onclick="sendSuggestion(this)">📋 Reglamento académico</button>
+      <button class="suggestion-chip" onclick="sendSuggestion(this)">🎓 Becas UNSAAC</button>
+      <button class="suggestion-chip" onclick="sendSuggestion(this)">👩‍🏫 Sistema de tutoría</button>
+      <button class="suggestion-chip" onclick="sendSuggestion(this)">💼 Prácticas pre profesionales</button>
+    </div>
+
+    <div class="chat-input-row">
+      <button class="btn btn-icon" id="btnMic" title="Hablar"
+        onclick="toggleMic()" aria-label="Activar micrófono">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="micIcon">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+          <line x1="12" y1="19" x2="12" y2="23"/>
+          <line x1="8" y1="23" x2="16" y2="23"/>
+        </svg>
+      </button>
+
+      <div class="chat-input-wrapper">
+        <textarea id="chatInput" class="chat-input-field"
+          placeholder="Escribe tu pregunta académica..."
+          rows="1" aria-label="Pregunta a Tutoris" maxlength="500"></textarea>
+        <button class="chat-send-btn" id="sendBtn" onclick="sendMessage()" aria-label="Enviar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <p class="input-hint">
+      <kbd>Enter</kbd> para enviar &nbsp;·&nbsp; <kbd>Shift+Enter</kbd> nueva línea
+    </p>
+  </footer>
+</div>
+
+<!-- ── MODAL BIENVENIDA CON TUTORA (solo usuarios autenticados) ── -->
+<div class="modal-overlay" id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
+  <div class="glass-card welcome-modal-card">
+
+    <div class="welcome-top">
+      <div class="welcome-icon">🎓</div>
+      <h2 class="welcome-title" id="welcomeTitle">¡Bienvenido/a a Tutoris!</h2>
+      <p class="welcome-subtitle" id="welcomeUserName">Estudiante</p>
+    </div>
+
+    <div class="welcome-divider"></div>
+
+    <p class="welcome-intro">Como estudiante de la UNSAAC, tienes asignada una <strong>tutora académica</strong> que te acompañará durante tu formación:</p>
+
+    <div class="welcome-tutor-card">
+      <div class="welcome-tutor-avatar">👩‍🏫</div>
+      <div class="welcome-tutor-info">
+        <div class="welcome-tutor-name">Mg. Maritza Katherine Irpanocca Cusimayta</div>
+        <div class="welcome-tutor-role">Docente Tutora Académica</div>
+        <div class="welcome-tutor-dept">Dpto. Ingeniería Informática · FIEEIM · UNSAAC</div>
+      </div>
+    </div>
+
+    <div class="welcome-hint">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+      Puedes ver más información de tu tutora haciendo clic en el ícono <strong>👥</strong> del encabezado.
+    </div>
+
+    <button class="btn btn-gold btn-full" onclick="closeWelcomeModal()" style="margin-top:20px; font-size:1rem; padding:14px;">
+      ¡Comenzar a chatear! 🚀
+    </button>
+  </div>
+</div>
+
+<!-- ── MODAL TUTORA (detalle) ── -->
+<div class="modal-overlay" id="tutorModal" role="dialog" aria-modal="true"
+  aria-labelledby="tutorModalTitle" onclick="closeTutorModal(event)">
+  <div class="glass-card modal-card" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeTutorModal()" aria-label="Cerrar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <div class="tutor-header">
+      <div class="tutor-avatar">👩‍🏫</div>
+      <div>
+        <div id="tutorModalTitle" class="tutor-name">Mg. Maritza Katherine Irpanocca Cusimayta</div>
+        <div class="tutor-title">Docente Tutora Académica</div>
+        <div class="tutor-dept">Dpto. Académico de Ingeniería Informática</div>
+      </div>
+    </div>
+
+    <div class="tutor-badge">
+      <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+      Tutora asignada · Activa
+    </div>
+
+    <div class="tutor-info-grid">
+      <div class="tutor-info-item">
+        <span class="tutor-info-icon">🏛️</span>
+        <div>
+          <div class="tutor-info-label">Facultad</div>
+          <div class="tutor-info-value">Ingeniería Eléctrica, Electrónica, Informática y Mecánica (FIEEIM)</div>
+        </div>
+      </div>
+      <div class="tutor-info-item">
+        <span class="tutor-info-icon">🕐</span>
+        <div>
+          <div class="tutor-info-label">Horario de tutoría</div>
+          <div class="tutor-info-value">Lunes y Miércoles: 10:00 – 12:00<br>Viernes: 14:00 – 16:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tutor-functions">
+      <div class="tutor-functions-title">Funciones del tutor (Art. 13° Reglamento Tutoría)</div>
+      <div class="tutor-function-item">Acompañamiento en tu trayectoria académica semestral</div>
+      <div class="tutor-function-item">Orientación en metodología de estudio y aprendizaje</div>
+      <div class="tutor-function-item">Seguimiento de rendimiento académico</div>
+      <div class="tutor-function-item">Derivación a Bienestar Universitario cuando sea necesario</div>
+      <div class="tutor-function-item">Atención especial en matrícula condicionada</div>
+    </div>
+
+    <button class="btn btn-gold btn-full" onclick="closeTutorModal()">Entendido</button>
+  </div>
+</div>
+
+<!-- ── MENÚ USUARIO ── -->
+<div class="modal-overlay" id="userMenu" onclick="closeUserMenu(event)">
+  <div class="glass-card user-menu-card" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeUserMenu()" aria-label="Cerrar menú">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="user-menu-header">
+      <div class="user-menu-avatar" id="menuAvatar">?</div>
+      <div>
+        <div class="user-menu-name" id="menuName">Usuario</div>
+        <div class="user-menu-email" id="menuEmail"></div>
+        <div class="user-menu-badge" id="menuBadge"></div>
+      </div>
+    </div>
+    <button class="btn btn-glass btn-full user-menu-btn" onclick="logout()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+        <polyline points="16 17 21 12 16 7"/>
+        <line x1="21" y1="12" x2="9" y2="12"/>
+      </svg>
+      Cerrar sesión
+    </button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Scripts -->
+<script src="nlp-engine.js"></script>
+<script src="speech.js"></script>
+
+<script>
+/* ============================================================
+   TUTORIS CHAT — Lógica principal
+   ============================================================ */
+
+const state = {
+  nlp: null, speech: null, user: null,
+  voiceEnabled: true, micActive: false, isProcessing: false
+};
+
+// ── Inicialización ────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
+  loadUserSession();
+  state.speech = new SpeechManager();
+  updateVoiceIcon();
+  await initNLP();
+
+  const ta = document.getElementById('chatInput');
+  ta.addEventListener('input', () => {
+    ta.style.height = 'auto';
+    ta.style.height = Math.min(ta.scrollHeight, 120) + 'px';
+  });
+  ta.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  });
+});
+
+// ── Sesión de usuario ─────────────────────────────────────────
+function loadUserSession() {
+  const saved = sessionStorage.getItem('tutoris_user');
+  if (!saved) { window.location.href = 'index.html'; return; }
+
+  state.user = JSON.parse(saved);
+  const name = state.user.name || 'Estudiante';
+  const initial = name.charAt(0).toUpperCase();
+
+  // Header avatar
+  const avatarEl = document.getElementById('userAvatarSm');
+  if (state.user.photo) {
+    avatarEl.innerHTML = `<img src="${state.user.photo}" alt="${name}"
+      style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
+      onerror="this.parentElement.textContent='${initial}'">`;
+  } else {
+    avatarEl.textContent = initial;
+  }
+  document.getElementById('userNameSm').textContent = name.split(' ')[0];
+
+  // Menú usuario
+  document.getElementById('menuAvatar').textContent = initial;
+  document.getElementById('menuName').textContent = state.user.isGuest ? 'Modo Invitado' : name;
+  document.getElementById('menuEmail').textContent = state.user.email || 'Sin cuenta registrada';
+  document.getElementById('menuBadge').textContent = state.user.isGuest ? '' : '✓ Cuenta verificada';
+
+  // Botón tutora: solo para usuarios autenticados
+  if (!state.user.isGuest) {
+    document.getElementById('btnTutor').style.display = 'flex';
+  }
+}
+
+// ── NLP ───────────────────────────────────────────────────────
+async function initNLP() {
+  setStatus('loading', 'Cargando corpus...');
+  try {
+    const res = await fetch('corpus.txt');
+    if (!res.ok) throw new Error('corpus.txt no encontrado');
+    const text = await res.text();
+    setStatus('loading', 'Procesando información académica...');
+    state.nlp = new NLPEngine();
+    await state.nlp.build(text);
+    document.getElementById('nlpLoading').classList.add('hidden');
+    setStatus('online', 'En línea');
+
+    // Mensaje de bienvenida
+    const firstName = state.user?.name?.split(' ')[0] || 'estudiante';
+    const greeting = state.user?.isGuest
+      ? '¡Hola! Soy **Tutoris**, tu asistente académico de la UNSAAC. Estás en modo invitado. ¿En qué puedo ayudarte?'
+      : `¡Hola, ${firstName}! Soy **Tutoris**, tu asistente académico de la UNSAAC. Puedo ayudarte con la malla curricular, reglamentos, becas, tutorías y más. ¿Qué deseas saber?`;
+    addBotMessage(greeting);
+    if (state.voiceEnabled) state.speech.speak(greeting.replace(/\*\*/g,''));
+
+    // Mostrar modal tutora solo si es usuario autenticado y no se ha mostrado aún
+    if (!state.user.isGuest && !sessionStorage.getItem('tutorWelcomeShown')) {
+      setTimeout(() => openWelcomeModal(), 800);
+    }
+
+  } catch(e) {
+    console.error(e);
+    document.getElementById('nlpLoading').classList.add('hidden');
+    setStatus('error', 'Error de carga');
+    addBotMessage('⚠️ No se pudo cargar el corpus. Asegúrate de servir la app desde un servidor HTTP (no directamente desde archivo). Consulta el README.md.');
+  }
+}
+
+// ── Enviar mensaje ─────────────────────────────────────────────
+window.sendMessage = function() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text || state.isProcessing) return;
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('quickSuggestions').style.display = 'none';
+  addUserMessage(text);
+  processQuery(text);
+};
+
+window.sendSuggestion = function(btn) {
+  const text = btn.textContent.replace(/^[^\w\u00C0-\u024F]+/, '').trim();
+  document.getElementById('quickSuggestions').style.display = 'none';
+  addUserMessage(text);
+  processQuery(text);
+};
+
+function processQuery(text) {
+  if (!state.nlp) { addBotMessage('El sistema aún está iniciando...'); return; }
+  state.isProcessing = true;
+  document.getElementById('sendBtn').disabled = true;
+  showTyping(true);
+  setTimeout(() => {
+    const result = state.nlp.query(text);
+    showTyping(false);
+    addBotMessage(result.text);
+    if (state.voiceEnabled) state.speech.speak(result.text);
+    state.isProcessing = false;
+    document.getElementById('sendBtn').disabled = false;
+  }, 400 + Math.random() * 500);
+}
+
+// ── Mensajes ──────────────────────────────────────────────────
+function addUserMessage(text) {
+  const initial = (state.user?.name || 'U').charAt(0).toUpperCase();
+  const avatarHtml = state.user?.photo
+    ? `<img src="${state.user.photo}" alt="tú" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
+         onerror="this.parentElement.textContent='${initial}'">`
+    : initial;
+  appendToChat(`
+    <div class="msg-wrapper user" role="article">
+      <div>
+        <div class="msg-bubble user">${esc(text)}</div>
+        <div class="msg-time">${now()}</div>
+      </div>
+      <div class="msg-avatar user-av" aria-hidden="true">${avatarHtml}</div>
+    </div>`);
+}
+
+function addBotMessage(text) {
+  appendToChat(`
+    <div class="msg-wrapper" role="article">
+      <div class="msg-avatar bot" aria-hidden="true">T</div>
+      <div>
+        <div class="msg-bubble bot">${fmt(text)}</div>
+        <div class="msg-time">Tutoris · ${now()}</div>
+      </div>
+    </div>`);
+}
+
+function appendToChat(html) {
+  const c = document.getElementById('chatMessages');
+  c.insertAdjacentHTML('beforeend', html);
+  c.scrollTop = c.scrollHeight;
+}
+
+function fmt(t) {
+  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+}
+function esc(t) {
+  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function now() {
+  return new Date().toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit'});
+}
+
+// ── Typing ────────────────────────────────────────────────────
+function showTyping(show) {
+  document.getElementById('typingIndicator').classList.toggle('visible', show);
+  if (show) document.getElementById('chatMessages').scrollTop = 99999;
+}
+
+// ── Micrófono ─────────────────────────────────────────────────
+window.toggleMic = function() {
+  if (!state.speech?.isRecognitionSupported()) {
+    showToast('⚠️ Usa Chrome o Edge para reconocimiento de voz.', 'error'); return;
+  }
+  if (state.micActive) {
+    state.speech.stopListening(); setMicState(false);
+  } else {
+    const inp = document.getElementById('chatInput');
+    state.speech.onStart  = () => { setMicState(true); inp.placeholder = '🎙️ Escuchando...'; };
+    state.speech.onResult = (t, final) => {
+      inp.value = t; inp.style.height = 'auto';
+      inp.style.height = Math.min(inp.scrollHeight,120)+'px';
+      if (final && t.trim()) {
+        state.speech.stopListening(); setMicState(false);
+        inp.placeholder = 'Escribe tu pregunta académica...';
+        setTimeout(() => sendMessage(), 300);
+      }
+    };
+    state.speech.onEnd   = () => { setMicState(false); inp.placeholder = 'Escribe tu pregunta académica...'; };
+    state.speech.onError = (err) => {
+      setMicState(false); inp.placeholder = 'Escribe tu pregunta académica...';
+      if (err==='not-allowed') showToast('Permiso de micrófono denegado.','error');
+    };
+    if (!state.speech.startListening()) showToast('No se pudo iniciar el micrófono.','error');
+  }
+};
+function setMicState(active) {
+  state.micActive = active;
+  document.getElementById('btnMic').classList.toggle('active', active);
+}
+
+// ── Voz salida ────────────────────────────────────────────────
+window.toggleVoiceOutput = function() {
+  if (!state.speech) return;
+  state.voiceEnabled = state.speech.toggleVoice();
+  updateVoiceIcon();
+  showToast(state.voiceEnabled ? '🔊 Voz activada' : '🔇 Voz desactivada', 'info');
+};
+function updateVoiceIcon() {
+  const btn = document.getElementById('btnVoiceToggle');
+  const ico = document.getElementById('voiceIcon');
+  if (!state.voiceEnabled) {
+    btn.style.opacity = '0.4';
+    ico.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>`;
+  } else {
+    btn.style.opacity = '1';
+    ico.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>`;
+  }
+}
+
+// ── Modal bienvenida tutora ───────────────────────────────────
+function openWelcomeModal() {
+  const name = state.user?.name?.split(' ')[0] || 'estudiante';
+  document.getElementById('welcomeUserName').textContent = name;
+  document.getElementById('welcomeModal').classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+window.closeWelcomeModal = function() {
+  document.getElementById('welcomeModal').classList.remove('visible');
+  document.body.style.overflow = '';
+  sessionStorage.setItem('tutorWelcomeShown', 'true');
+};
+
+// ── Modal tutora detalle ──────────────────────────────────────
+window.openTutorModal = function() {
+  document.getElementById('tutorModal').classList.add('visible');
+  document.body.style.overflow = 'hidden';
+};
+window.closeTutorModal = function(e) {
+  if (!e || e.target === document.getElementById('tutorModal')) {
+    document.getElementById('tutorModal').classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+};
+
+// ── Menú usuario ─────────────────────────────────────────────
+window.showUserMenu  = function() { document.getElementById('userMenu').classList.add('visible'); };
+window.closeUserMenu = function(e) {
+  if (!e || e.target === document.getElementById('userMenu')) {
+    document.getElementById('userMenu').classList.remove('visible');
+  }
+};
+
+// ── Logout ────────────────────────────────────────────────
+window.logout = function() {
+  sessionStorage.clear();
+  window.location.href = 'index.html';
+};
+
+// ── Status ────────────────────────────────────────────────────
+function setStatus(type, text) {
+  document.getElementById('statusDot').className =
+    `status-dot${type==='online'?'':type==='error'?' error':' loading'}`;
+  document.getElementById('statusText').textContent = text;
+}
+
+// ── Toast ─────────────────────────────────────────────────────
+window.showToast = function(msg, type='info') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast visible ${type}`;
+  setTimeout(()=>t.classList.remove('visible'), 4000);
+};
+
+// ── ESC cierra modales ────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key==='Escape') { closeTutorModal(); closeUserMenu();
+    document.getElementById('welcomeModal').classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+});
+</script>
+</body>
+</html>

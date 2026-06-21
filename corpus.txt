@@ -1,0 +1,604 @@
+================================================================
+CORPUS CONVERSACIONAL - CHATBOT TUTORIS UNSAAC
+Versión conversacional — sin referencias a reglamentos ni artículos
+================================================================
+
+INSTRUCCIÓN GENERAL PARA EL MODELO:
+Responde siempre de forma directa, amigable y concisa. No menciones
+artículos, resoluciones, reglamentos ni fuentes. Solo da la información
+que el usuario necesita, como si fuera un orientador universitario que
+conoce todo de memoria.
+
+================================================================
+SECCIÓN 1: TUTORÍA ACADÉMICA
+================================================================
+
+P: ¿Qué es una tutoría?
+R: La tutoría es un acompañamiento personalizado que un docente te brinda durante toda tu carrera. Su objetivo es ayudarte académicamente, orientarte en lo personal y prepararte para la vida profesional. No es solo para cuando tienes problemas: cualquier estudiante puede tener tutor.
+
+P: ¿Quién puede tener tutor?
+R: Todos los estudiantes de la UNSAAC tienen asignado un tutor desde que ingresan. Es obligatorio tener uno si tu matrícula es condicionada por bajo rendimiento.
+
+P: ¿Cuándo me reúno con mi tutor?
+R: Como mínimo deberías reunirte tres veces al semestre: al inicio del ciclo, después del primer parcial, y una semana antes de que termine el semestre. Pero puedes pedir más reuniones cuando lo necesites, y tu tutor también puede citarte.
+
+P: ¿Qué hace el tutor por mí?
+R: Te ayuda a organizar tu tiempo de estudio, te orienta en tus cursos, te acompaña si tienes dificultades académicas o personales, y si lo necesitas, te deriva a Bienestar Universitario para atención especializada.
+
+P: ¿Cuántos estudiantes tiene cada tutor?
+R: Lo ideal es que cada tutor tenga máximo 25 estudiantes. Si en tu facultad hay más alumnos de los que los docentes pueden atender, pueden sumarse docentes becarios o colaboradores bajo supervisión.
+
+P: ¿Puedo cambiar de tutor?
+R: Sí, puedes solicitarlo de forma justificada al Comité Tutorial de tu Escuela Profesional. Ellos evalúan el pedido escuchando también al tutor antes de decidir.
+
+P: ¿El tutor puede contarle mis cosas a otros?
+R: No. Los tutores tienen el deber de confidencialidad sobre la información personal que compartes con ellos. Solo usan lo necesario para ayudarte académicamente.
+
+================================================================
+SECCIÓN 2: PRÁCTICAS PRE PROFESIONALES
+================================================================
+
+P: ¿Qué son las prácticas pre profesionales?
+R: Son una actividad práctica que realizas en una empresa o institución pública o privada para aplicar lo que aprendiste en la carrera. Son parte del plan de estudios y necesitas completarlas para obtener el grado de Bachiller.
+
+P: ¿Cuándo hago las prácticas?
+R: Están en el décimo semestre (el último). Para matricularte en ellas necesitas tener al menos 180 créditos aprobados.
+
+P: ¿Cuántos créditos valen las prácticas?
+R: 8 créditos, que se distribuyen en 16 horas prácticas semanales.
+
+P: ¿Quién me asesora en las prácticas?
+R: Un docente asesor que tú eliges. Lo propones al Director de la Escuela y él lo presenta al Decano para su nombramiento. Tu asesor te guía en el plan de prácticas, supervisa tu informe final y te acompaña en la sustentación.
+
+P: ¿Qué tengo que entregar al final de mis prácticas?
+R: Un informe final que sustentas oralmente ante el Director de la Escuela. Tu asesor te acompaña en esa presentación.
+
+P: ¿Puedo convalidar prácticas que ya hice?
+R: Sí, es posible convalidar prácticas realizadas anteriormente. El trámite lo resuelve el Decano de tu Facultad mediante una resolución, que asigna los créditos correspondientes.
+
+================================================================
+SECCIÓN 3: PLAN DE ESTUDIOS Y MALLA CURRICULAR
+================================================================
+
+P: ¿Cuántos semestres dura la carrera?
+R: 10 semestres (5 años). Cada semestre tiene 22 créditos y dura 17 semanas.
+
+P: ¿Cuántos créditos en total necesito para terminar?
+R: 220 créditos en total, distribuidos en 59 cursos.
+
+P: ¿Cuáles son las áreas de la malla?
+R: La carrera se organiza en cinco áreas:
+- Estudios Generales: 10 cursos / 37 créditos (primeros semestres)
+- Estudios Específicos: 25 cursos / 94 créditos
+- Estudios de Especialidad: 20 cursos obligatorios / 75 créditos + 23 electivos disponibles
+- Actividades Extracurriculares: 4 cursos / 8 créditos
+- Prácticas Pre Profesionales: 1 curso / 8 créditos
+
+P: ¿Qué cursos llevo en el primer semestre?
+R: En el primer semestre no hay prerrequisitos. Los cursos son:
+- Química General (4 créditos)
+- Álgebra y Geometría Analítica (4 créditos)
+- Historia Crítica del Perú e Identidad Nacional (3 créditos)
+- Física I (4 créditos)
+- Ecología y Medio Ambiente (3 créditos)
+- Cálculo I (4 créditos)
+Total: 22 créditos.
+
+P: ¿Qué cursos llevo en el segundo semestre?
+R: Los cursos del segundo semestre son:
+- Lingüística y Comunicación Humana (4 créditos, sin prerrequisito)
+- Estadística General (4 créditos, sin prerrequisito)
+- Pensamiento Computacional e IA (3 créditos, sin prerrequisito)
+- Cálculo II (4 créditos, prerrequisito: Cálculo I)
+- Fundamentos de Programación (3 créditos, sin prerrequisito)
+- Matemáticas Discretas I (4 créditos, prerrequisito: Álgebra y Geometría Analítica)
+Total: 22 créditos.
+
+P: ¿Qué cursos llevo en el tercer semestre?
+R: - Algoritmos y Estructuras de Datos I (4 créditos, prerrequisitos: Fundamentos de Programación + Pensamiento Computacional e IA)
+- Programación I (2 créditos, prerrequisito: Fundamentos de Programación)
+- Álgebra Lineal Computacional (4 créditos, prerrequisito: Álgebra y Geometría Analítica)
+- Física Aplicada a la Informática (4 créditos, prerrequisito: Física I)
+- Matemáticas Discretas II (4 créditos, prerrequisito: Matemáticas Discretas I)
+- Cálculo III (4 créditos, prerrequisito: Cálculo II)
+Total: 22 créditos.
+
+P: ¿Qué cursos llevo en el cuarto semestre?
+R: - Algoritmos y Estructuras de Datos II (4 créditos, prerrequisitos: AED I + Programación I)
+- Programación II (2 créditos, prerrequisitos: AED I + Programación I)
+- Organización y Dirección de Empresas (4 créditos, prerrequisito: 60 créditos acumulados)
+- Electrónica y Diseño Digital (4 créditos, prerrequisito: Física Aplicada a la Informática)
+- Modelos Probabilísticos (4 créditos, prerrequisitos: Matemáticas Discretas II + Estadística General)
+- Ecuaciones Diferenciales (4 créditos, prerrequisito: Cálculo III)
+Total: 22 créditos.
+
+P: ¿Qué cursos llevo en el quinto semestre?
+R: - Análisis y Diseño de Algoritmos (4 créditos, prerrequisito: AED II)
+- Programación III (2 créditos, prerrequisito: Programación II)
+- Análisis y Diseño de Sistemas de Información (4 créditos, prerrequisitos: AED II + Organización de Empresas)
+- Organización y Arquitectura del Computador (4 créditos, prerrequisito: Electrónica y Diseño Digital)
+- Métodos Numéricos (4 créditos, prerrequisito: Ecuaciones Diferenciales)
+- Teoría de la Computación (4 créditos, prerrequisito: AED II)
+Total: 22 créditos.
+
+P: ¿Qué cursos llevo en el sexto semestre?
+R: - Inteligencia Artificial (4 créditos, prerrequisito: Álgebra Lineal Computacional)
+- Fundamentos y Diseño de Base de Datos (4 créditos, prerrequisito: Análisis y Diseño de SI)
+- Sistemas Operativos (4 créditos, prerrequisito: Organización y Arquitectura del Computador)
+- Modelado y Simulación (4 créditos, prerrequisitos: Modelos Probabilísticos + Métodos Numéricos)
+- Deporte (2 créditos, prerrequisito: 100 créditos acumulados)
+- Electivo de Especialidad (4 créditos)
+Total: 22 créditos.
+
+P: ¿Qué cursos llevo en el séptimo semestre?
+R: - Aprendizaje Automático (4 créditos, prerrequisito: Inteligencia Artificial)
+- Metodología y Desarrollo de Software (5 créditos, prerrequisito: Fundamentos y Diseño de BD)
+- Redes de Computadoras I (4 créditos, prerrequisito: Sistemas Operativos)
+- Ciencia de Datos (3 créditos, prerrequisito: Inteligencia Artificial)
+- Proyección Social (2 créditos, prerrequisito: 120 créditos acumulados)
+- Electivo de Especialidad (4 créditos)
+Total: 22 créditos.
+
+P: ¿Qué cursos llevo en el octavo semestre?
+R: - Programación Paralela y Distribuida (4 créditos, prerrequisitos: Redes I + Análisis y Diseño de Algoritmos)
+- Aprendizaje Profundo (4 créditos, prerrequisito: Aprendizaje Automático)
+- Ingeniería de Software I (4 créditos, prerrequisito: Metodología y Desarrollo de Software)
+- Redes de Computadoras II (4 créditos, prerrequisito: Redes I)
+- Formulación de Proyectos de TI (3 créditos, prerrequisito: Metodología y Desarrollo de Software)
+- Electivo de Especialidad (3 créditos)
+Total: 22 créditos.
+
+P: ¿Qué cursos llevo en el noveno semestre?
+R: - Seminario de Investigación (3 créditos, prerrequisito: 170 créditos acumulados)
+- Ingeniería de Software II (4 créditos, prerrequisito: Ingeniería de Software I)
+- Sistemas Internet de las Cosas (4 créditos, prerrequisitos: Redes II + Aprendizaje Automático)
+- Ciberseguridad (4 créditos, prerrequisito: Redes II)
+- Electivo de Especialidad (4 créditos)
+- Electivo de Especialidad (3 créditos)
+Total: 22 créditos.
+
+P: ¿Qué cursos llevo en el décimo semestre?
+R: - Trabajo de Investigación (4 créditos, prerrequisito: Seminario de Investigación)
+- Desarrollo de Proyectos de Ingeniería de Software (4 créditos, prerrequisitos: Formulación de Proyectos TI + Ingeniería de Software II)
+- Administración de TI (4 créditos, prerrequisito: Ciberseguridad)
+- Debate (2 créditos, prerrequisito: 180 créditos acumulados)
+- Prácticas Pre Profesionales (8 créditos, prerrequisito: 180 créditos acumulados)
+Total: 22 créditos.
+
+P: ¿Qué cursos electivos puedo tomar?
+R: Hay 23 cursos electivos de especialidad disponibles. Algunos ejemplos:
+- Desarrollo de Aplicaciones Web (prerrequisito: Ingeniería de Software I)
+- Desarrollo de Aplicaciones Móviles (prerrequisito: Ingeniería de Software I)
+- Computación Gráfica I (prerrequisitos: AED II + Programación II)
+- Algoritmos Avanzados (prerrequisito: Teoría de la Computación)
+- Aprendizaje Automático Robótico (prerrequisito: Inteligencia Artificial)
+- Visión Computacional (prerrequisito: Aprendizaje Profundo)
+- Procesamiento de Lenguaje Natural (prerrequisito: Aprendizaje Profundo)
+- Blockchain (prerrequisitos: Ingeniería de Software I + Redes II)
+- Compiladores (prerrequisito: Teoría de la Computación)
+- Ciberseguridad Avanzada, IoT, Big Data y más.
+¿Quieres detalles de alguno en específico?
+
+P: ¿Cuántos créditos necesito para llevar el curso de Organización y Dirección de Empresas?
+R: Necesitas tener al menos 60 créditos aprobados.
+
+P: ¿Cuántos créditos necesito para Deporte?
+R: 100 créditos acumulados.
+
+P: ¿Cuántos créditos necesito para Proyección Social?
+R: 120 créditos acumulados.
+
+P: ¿Cuántos créditos necesito para el Seminario de Investigación?
+R: 170 créditos acumulados.
+
+P: ¿Cuántos créditos necesito para las Prácticas Pre Profesionales o Debate?
+R: 180 créditos acumulados, que es el requisito más alto de toda la malla.
+
+P: ¿Cuál es el curso con más créditos de la carrera?
+R: Las Prácticas Pre Profesionales, con 8 créditos. Le sigue Metodología y Desarrollo de Software, con 5 créditos.
+
+P: ¿Qué grado y título obtengo al terminar?
+R: Al completar los créditos obtienes el grado de Bachiller en Ingeniería Informática y de Sistemas. Luego puedes obtener el Título Profesional de Ingeniero Informático y de Sistemas.
+
+P: ¿La carrera está acreditada?
+R: Sí, la Escuela tiene acreditación ICACIT (Instituto de Calidad y Acreditación de Programas de Computación, Informática y Sistemas), vigente desde 2018. Actualmente está en proceso de renovación de esa acreditación.
+
+================================================================
+SECCIÓN 4: ÁREAS DE DESEMPEÑO PROFESIONAL
+================================================================
+
+P: ¿En qué me puedo especializar o en qué áreas puedo trabajar al egresar?
+R: Como egresado de Ingeniería Informática y de Sistemas puedes desempeñarte en 10 grandes áreas:
+1. Ciencias de la Computación – desarrollo de algoritmos e innovación tecnológica
+2. Ingeniería en Computación – plataformas de hardware y software de sistema
+3. Ingeniería de Software – análisis, diseño y gestión de software
+4. Inteligencia Artificial – IA, machine learning, visión artificial, NLP, bioinformática, robótica
+5. Desarrollo de Software – aplicaciones para empresas de distintos sectores
+6. Ingeniería de Datos y Big Data – análisis de grandes volúmenes de datos
+7. Gestión de Proyectos – planificación y ejecución de proyectos tecnológicos
+8. IA y Machine Learning – soluciones inteligentes para diversas industrias
+9. Emprendimiento en TI – startups tecnológicas propias
+10. Administración de Redes – redes, conectividad y seguridad de infraestructura
+
+P: ¿Cuál es el lema de la escuela?
+R: "Tecnología e innovación para un mundo conectado."
+
+P: ¿Quién dirige la escuela actualmente?
+R: La Directora de la Escuela Profesional es la Dra. Yeshica Isela Ormeño Ayala. El Decano de la Facultad es el Dr. Lauro Enciso Rodas.
+
+================================================================
+SECCIÓN 5: BIENESTAR UNIVERSITARIO
+================================================================
+
+P: ¿Qué servicios ofrece Bienestar Universitario?
+R: Bienestar Universitario ofrece:
+- **Salud:** medicina general, psicología, odontología, enfermería y farmacia
+- **Alimentación:** comedor universitario para estudiantes con necesidad económica
+- **Deporte:** centro de educación física y actividades recreativas
+- **Asistencia Social:** apoyo económico mediante becas internas según situación socioeconómica
+
+P: ¿Cómo accedo al comedor universitario?
+R: El comedor es para estudiantes que necesitan apoyo alimentario. Debes postular a través de la Unidad de Asistencia Social de Bienestar Universitario, presentando documentos que acrediten tu situación económica.
+
+P: ¿Qué tipos de apoyo social existen en la UNSAAC?
+R: Existen cuatro modalidades:
+1. **Primeros puestos:** para estudiantes que ocupan del 1.° al 5.° puesto en su escuela
+2. **Casos sociales:** para estudiantes en situación de vulnerabilidad (orfandad, discapacidad familiar, problemas de salud, violencia familiar, etc.)
+3. **Estudiantes con discapacidad:** requieres carné o resolución CONADIS vigente
+4. **Deportistas destacados:** si eres deportista representativo o calificado
+
+P: ¿Cómo postulo al apoyo de Bienestar?
+R: La postulación se hace a través de la plataforma PLADDES. Necesitas presentar tu expediente físico en la oficina de Asistencia Social (Pabellón de Bienestar Universitario, 1er piso) durante las entrevistas. Los documentos básicos son: solicitud al Rector, constancia de matrícula, ficha de seguimiento académico y una declaración jurada de no recibir otra beca.
+
+P: ¿Puedo acceder a atención psicológica en la UNSAAC?
+R: Sí, el Centro Universitario de Salud (CUS) ofrece atención psicológica gratuita para estudiantes. Te ayudan con manejo de estrés, ansiedad, problemas académicos y personales.
+
+================================================================
+SECCIÓN 6: MOVILIDAD ESTUDIANTIL
+================================================================
+
+P: ¿Qué es la movilidad estudiantil?
+R: Es un programa de intercambio académico que te permite cursar materias o hacer investigación en otras universidades del Perú o del extranjero con las que la UNSAAC tiene convenio, sin pagar derechos académicos en la universidad de destino (dependiendo del convenio).
+
+P: ¿A qué universidades puedo postular?
+R: Actualmente hay convenios activos con:
+- **PUCP** (Pontificia Universidad Católica del Perú) — cierre: 26 de junio
+- **UNMSM** (Universidad Nacional Mayor de San Marcos) — cierre: 17 de junio
+- **Universidad del Pacífico** — cierre: 8 de julio al mediodía
+- **UNI** (Universidad Nacional de Ingeniería) — cierre: 28 de mayo
+- **UPTC** (Universidad Pedagógica y Tecnológica de Colombia) — cierre: 28 de mayo
+- **BUAP** (Benemérita Universidad Autónoma de Puebla, México) — cierre: 12 de mayo
+- **Universidad de León** (España) — cierre: 14 de mayo
+- **UNAL** (Universidad Nacional de Colombia) — cierre: 21 de mayo al mediodía
+- **UNAM** (Universidad Nacional Autónoma de México) — cierre: 19 de marzo
+- **Universidad Estatal de Campinas** (Brasil) — cierre: 19 de mayo al mediodía
+
+P: ¿Qué requisitos generales necesito para la movilidad estudiantil?
+R: En general necesitas:
+- Estar matriculado en la UNSAAC (semestre 2026-I)
+- Estar entre el 5.° y 8.° semestre de tu carrera
+- Pertenecer al décimo, quinto o tercio superior de tu escuela
+- No haber participado en un intercambio previo (en la mayoría de los casos)
+Los requisitos específicos varían según la universidad de destino.
+
+P: ¿Cómo postulo a la movilidad estudiantil de la UNAM?
+R: La postulación a la UNAM se hace a través del Sistema de Gestión de Movilidad Estudiantil Entrante (SGMEE). La UNSAAC realiza tu nominación y tú completas el registro. Necesitas: constancia de matrícula, ficha de seguimiento, pasaporte vigente, certificado de vacunación COVID-19, carta de compromiso y fotografía carnet. El cierre fue el 19 de marzo.
+
+P: ¿La UNSAAC me da apoyo económico si salgo de intercambio?
+R: Sí, la UNSAAC brinda apoyo económico a los estudiantes seleccionados para movilidad. Para más detalles, debes acercarte a la Oficina de Cooperación y Relaciones Internacionales (OCRI), en el 8.° piso del pabellón de rectoría.
+
+P: ¿Tengo que pagar matrícula en la universidad de destino?
+R: No. En la mayoría de los convenios, el estudiante seleccionado está exonerado del pago de derechos académicos en la universidad de destino.
+
+P: ¿Puedo convalidar los cursos que lleve en el intercambio?
+R: Sí. Antes de salir debes revisar la oferta académica de la universidad de destino y armar un plan de estudios que luego se convalidará al regresar. Es importante coordinar esto con la OCRI y tu facultad antes de postular.
+
+================================================================
+SECCIÓN 7: BECAS
+================================================================
+
+P: ¿Qué becas existen para estudiantes de la UNSAAC?
+R: Hay dos tipos de fuente:
+1. **Becas propias de la UNSAAC:** Becas Pregrado 01, 02 y una de doctorado. Para información actualizada, acude a la Oficina de Bienestar Universitario (Av. De la Cultura 733, Cusco — teléfono: 084-232398 / 084-222271).
+2. **Becas PRONABEC:** El Estado ofrece varias becas, siendo la más relevante para ti la **Beca Permanencia**.
+
+P: ¿Qué es la Beca Permanencia?
+R: Es una beca del Estado para estudiantes de universidades públicas con buen rendimiento académico y en situación de pobreza o pobreza extrema. Cubre alimentación, movilidad local, útiles de escritorio y acompañamiento socioemocional.
+
+P: ¿Qué requisitos necesito para la Beca Permanencia?
+R: Necesitas:
+- Ser peruano
+- Estar en condición de pobreza o pobreza extrema según el SISFOH
+- Tener rendimiento de medio superior como mínimo en tu último semestre
+- Ser estudiante de una universidad pública y estar entre el 2.° y último ciclo
+
+P: ¿Qué cosas me dan más puntaje al postular a la Beca Permanencia?
+R: No son obligatorios, pero suman puntos: ser víctima del conflicto armado (1980-2000), acreditar discapacidad, ser bombero activo o hijo de bombero, ser voluntario del MIMP, ser licenciado del servicio militar, ser hijo/a en situación de orfandad, ser agente comunitario de salud, pertenecer a comunidades nativas o pueblo afroperuano, haber crecido en desprotección familiar, y otros.
+
+P: ¿Puedo perder la Beca Permanencia?
+R: Sí. La beca se pierde si: desapruebas el mismo curso tres veces, desapruebas todos los cursos de un mismo ciclo, falseas información, o incumples el Compromiso de Servicio al Perú.
+
+P: ¿Qué es el Compromiso de Servicio al Perú?
+R: Es el compromiso de trabajar en el Perú por al menos 1 año después de terminar tus estudios. Si no lo cumples, podrías tener que devolver al Estado toda la inversión recibida durante la beca.
+
+P: ¿Con cuántas jaladas pierdo la beca?
+R: Con tres desaprobaciones en el mismo curso, o si jalás todos los cursos de un mismo semestre.
+
+P: ¿Puedo quedar impedido de postular a otra beca si pierdo esta?
+R: Sí. Si perdiste o renunciaste a una beca PRONABEC, quedas impedido de postular a cualquier otra beca del Estado para el mismo nivel de estudios de forma permanente.
+
+================================================================
+SECCIÓN 8: MATRÍCULA
+================================================================
+
+P: ¿Cómo me matriculo?
+R: Ingresas al sistema por Internet con tu código de estudiante, seleccionas los cursos disponibles según tu plan de estudios, pagas el monto correspondiente y confirmas. El sistema registra tu matrícula automáticamente y puedes descargar tu constancia.
+
+P: ¿Cuántos créditos mínimos debo llevar por semestre?
+R: Al menos 12 créditos para ser considerado estudiante regular. Si llevas menos de 12 créditos, tu matrícula es "no regular".
+
+P: ¿Cuánto cuesta la matrícula?
+R: Depende de tu situación académica:
+- **Escala A:** estudiantes sin cursos jalados del semestre anterior o ingresantes
+- **Escala B:** si tienes cursos desaprobados del semestre anterior (el costo aumenta según el número de créditos jalados)
+- **Escala C:** graduados o titulados estudiando una segunda carrera
+- **Escala D:** matrícula especial
+
+P: ¿Puedo dejar de estudiar un tiempo y luego volver?
+R: Sí. Si no te matriculas hasta 6 semestres (consecutivos o no), debes tramitar un reinicio de estudios. Si superas los 6 semestres sin matrícula, pierdes automáticamente la condición de estudiante.
+
+P: ¿Puedo llevar un curso que no está en el catálogo del semestre?
+R: Sí, se llama "curso dirigido". Es solo para estudiantes próximos a egresar que necesitan ese curso para completar sus créditos. Necesitas autorización del Decano y pagas una tasa adicional. Solo puedes hacerlo una vez.
+
+================================================================
+SECCIÓN 9: CURSOS JALADOS Y CONSECUENCIAS
+================================================================
+
+P: ¿Qué pasa si jalo un curso por primera vez?
+R: Quedas en situación de observación académica. El sistema te notifica de eso cuando haces tu matrícula del siguiente semestre. Además, pagarás una tasa adicional al matricularte (Escala B) según los créditos que jalaste.
+
+P: ¿Qué pasa si jalo el mismo curso por segunda vez?
+R: Sigues en observación académica. Además, te asignan un docente tutor de forma obligatoria y debes firmar un compromiso escrito de mejorar tu rendimiento. Para matricularte necesitarás una resolución del Decano, que solo se emite si tu tutor da el visto bueno.
+
+P: ¿Qué pasa si jalo el mismo curso por tercera vez?
+R: Quedas suspendido por un año académico completo. No puedes matricularte durante ese tiempo.
+
+P: ¿Qué pasa después de la suspensión?
+R: Al volver, solo te matriculan en ese curso que jalaste tres veces. Si lo jalás una cuarta vez, eres separado automáticamente de tu Escuela Profesional.
+
+P: ¿La separación es un castigo disciplinario?
+R: No. Es una medida estrictamente académica por bajo rendimiento, no tiene carácter disciplinario.
+
+P: ¿Si me separan de la carrera puedo volver a la UNSAAC?
+R: Sí. Puedes postular a una nueva Escuela Profesional dentro de la UNSAAC. No pierdes ese derecho.
+
+P: ¿Cuál es la escala de notas en la UNSAAC?
+R: La escala es:
+- 14 a 20: Aprobado
+- 10 a 13: Desaprobado
+- 0 a 9: Reprobado
+Tanto reprobado como desaprobado cuentan como jalado para efectos de matrícula y consecuencias académicas.
+
+P: ¿Puedo pedir que me postpongan un examen?
+R: Sí. Puedes pedirle directamente al docente con anticipación si tienes: problemas de salud, fallecimiento de un familiar directo, o una situación de fuerza mayor. Si no te presentas en la fecha diferida, te queda nota cero.
+
+P: ¿Existe alguna evaluación de recuperación?
+R: Sí. Si quedas desaprobado puedes solicitar una evaluación de subsanación dentro de los 30 días de obtenida tu nota. También existe la evaluación de sustitución en casos específicos: si la nota que sacas es mayor, reemplaza a la anterior; si es menor, no la afecta.
+
+================================================================
+SECCIÓN 10: BACHILLER Y TITULACIÓN
+================================================================
+
+P: ¿Qué necesito para graduarme de Bachiller?
+R: Completar todos los créditos del plan de estudios (220 créditos, incluyendo prácticas pre profesionales). Además debes presentar: solicitud, ficha de seguimiento académico, DNI vigente, certificación de idioma extranjero, certificación de computación del Instituto de Sistemas Cusco o el CCI-UNSAAC, y el pago correspondiente por bachillerato.
+
+P: ¿Cómo obtengo el título profesional?
+R: Después del bachillerato, puedes titularte mediante:
+- **Tesis:** trabajo de investigación que sustentás en acto público ante un jurado
+- **Examen de suficiencia profesional:** examen oral de mínimo 2 horas sobre temas de tu especialidad
+
+P: ¿Cómo es la sustentación de tesis?
+R: El jurado está presidido por el Decano (o un delegado) y compuesto por docentes ordinarios. La sustentación tiene dos partes: exposición oral (máximo 45 minutos para tesis individual, 60 minutos para tesis grupal) y evaluación del jurado. La nota final es el promedio de los jurados (excluyendo al asesor). Si sacas menos de 14, desapruebas.
+
+P: ¿Qué pasa si desapruebo la sustentación de tesis?
+R: Puedes pedir una nueva fecha después de 30 días calendario. Si vuelves a desaprobar, debes esperar al menos 6 meses para una nueva oportunidad.
+
+================================================================
+SECCIÓN 11: CONVALIDACIÓN Y TRASLADOS
+================================================================
+
+P: ¿Puedo convalidar cursos de otra universidad?
+R: Sí. Se convalida una asignatura si coincide en al menos el 80% del contenido con la que tienes en tu plan de estudios de la UNSAAC. La Comisión Académica de tu Escuela lo evalúa en 3 días hábiles y el Decano emite la resolución. Cada asignatura solo se puede convalidar una vez.
+
+P: ¿Quién puede solicitar convalidación?
+R: Puedes solicitarla si: ingresas por traslado externo (de otra universidad), realizas traslado interno entre escuelas de la UNSAAC, tu plan de estudios cambió, ingresas como graduado o titulado, o regresás de un programa de intercambio académico.
+
+P: ¿Puedo trasladarme de otra universidad a la UNSAAC?
+R: Sí. Al ser admitido por traslado, el Decano autoriza tu matrícula mediante resolución y el Centro de Cómputo procesa el registro. Si el traslado es entre facultades distintas, tu facultad de origen debe enviar toda tu información académica.
+
+================================================================
+SECCIÓN 12: PREGUNTAS FRECUENTES Y VARIANTES
+================================================================
+
+P: ¿Qué nota necesito para aprobar?
+R: En la UNSAAC necesitas sacar 14 o más sobre 20 para aprobar un curso. Las notas de 10 a 13 se consideran desaprobado, y de 0 a 9 reprobado. Tanto desaprobado como reprobado cuentan como jalado.
+
+P: ¿Cuánto es la nota mínima para aprobar un examen?
+R: La nota mínima para aprobar es 14 sobre 20. Si sacas entre 10 y 13 quedas desaprobado, y de 0 a 9 reprobado. Ambos cuentan como jalado a efectos de matrícula.
+
+P: ¿Qué significa matrícula condicionada?
+R: La matrícula condicionada ocurre cuando has jalado cursos en el semestre anterior. Si jalaste por segunda vez el mismo curso, necesitas autorización del Decano (previa aprobación del tutor) para matricularte. En ese caso, la tutoría se vuelve obligatoria.
+
+P: ¿Qué es la suspensión académica?
+R: La suspensión académica es cuando jalas el mismo curso por tercera vez. Quedas suspendido por un año académico completo, sin poder matricularte en ningún curso durante ese tiempo. Al volver, solo puedes llevar ese curso.
+
+P: ¿Qué pasa si jalo todos los cursos de un semestre?
+R: Si jalas todos los cursos de un mismo semestre pierdes la Beca Permanencia si es que la tienes. Además, tu situación académica queda en observación y deberás cumplir con requisitos adicionales para matricularte el siguiente semestre.
+
+P: ¿Cuánto tiempo puedo dejar de estudiar?
+R: Puedes dejar de estudiar hasta 6 semestres (consecutivos o acumulados) sin perder tu condición de estudiante. Si superas ese límite, pierdes automáticamente la condición de estudiante de la UNSAAC.
+
+P: ¿Cómo es el sistema de notas de la UNSAAC?
+R: El sistema de notas es vigesimal (del 0 al 20):
+- 14 a 20: Aprobado
+- 10 a 13: Desaprobado (jalado)
+- 0 a 9: Reprobado (jalado)
+Ambas condiciones de desaprobado y reprobado tienen las mismas consecuencias académicas para efectos de matrícula y conteo de jaladas.
+
+P: ¿Qué es el examen de subsanación?
+R: Es una evaluación adicional que puedes solicitar si quedas desaprobado en un curso. Tienes un plazo de 30 días desde que obtienes tu nota para solicitarlo. También existe la evaluación de sustitución: si la nueva nota es mayor, reemplaza a la anterior; si es menor, no te afecta.
+
+P: ¿Puedo rendir un examen en otra fecha?
+R: Sí, puedes solicitar una fecha diferida al docente si tienes: problemas de salud debidamente acreditados, fallecimiento de un familiar directo, o una situación de fuerza mayor. Si no te presentas a la fecha diferida, la nota queda como cero automáticamente.
+
+P: ¿Qué es un curso dirigido?
+R: Es una modalidad especial de matrícula para estudiantes próximos a egresar que necesitan un curso específico para completar sus créditos. Requieres autorización del Decano y debes pagar una tasa adicional. Solo puedes acceder a él una vez en toda tu carrera.
+
+================================================================
+SECCIÓN 13: INFORMACIÓN GENERAL DE LA UNSAAC
+================================================================
+
+P: ¿Qué es la UNSAAC?
+R: La UNSAAC (Universidad Nacional San Antonio Abad del Cusco) es una de las universidades más antiguas del Perú y de América Latina, fundada en 1692. Es una universidad pública ubicada en la ciudad del Cusco, con múltiples facultades y programas de pregrado, posgrado e investigación.
+
+P: ¿Dónde está ubicada la UNSAAC?
+R: La sede principal de la UNSAAC está en la Av. De la Cultura 733, Cusco. La Facultad de Ingeniería Eléctrica, Electrónica, Informática y Mecánica (FIEEIM) está en el mismo campus.
+
+P: ¿Cuántos semestres tiene la carrera de Informática?
+R: La carrera de Ingeniería Informática y de Sistemas tiene 10 semestres (5 años de duración). Cada semestre tiene 22 créditos y dura 17 semanas.
+
+P: ¿En qué facultad está Ingeniería Informática?
+R: La Escuela Profesional de Ingeniería Informática y de Sistemas pertenece a la Facultad de Ingeniería Eléctrica, Electrónica, Informática y Mecánica, conocida como FIEEIM. El Decano actual es el Dr. Lauro Enciso Rodas.
+
+P: ¿Cuál es el lema de la escuela de Informática?
+R: El lema de la Escuela Profesional de Ingeniería Informática y de Sistemas es: "Tecnología e innovación para un mundo conectado."
+
+P: ¿Quién es el director de la escuela de Informática?
+R: La Directora de la Escuela Profesional de Ingeniería Informática y de Sistemas es la Dra. Yeshica Isela Ormeño Ayala.
+
+P: ¿Qué título obtengo al terminar la carrera?
+R: Al completar todos los créditos (220 en total) obtienes primero el grado de **Bachiller en Ingeniería Informática y de Sistemas**. Después puedes obtener el **Título Profesional de Ingeniero Informático y de Sistemas** mediante tesis o examen de suficiencia profesional.
+
+P: ¿La carrera de Informática de la UNSAAC está acreditada?
+R: Sí, la Escuela Profesional de Ingeniería Informática y de Sistemas tiene acreditación **ICACIT** (Instituto de Calidad y Acreditación de Programas de Computación, Informática y Sistemas), vigente desde 2018. Actualmente está en proceso de renovación de dicha acreditación.
+
+================================================================
+SECCIÓN 14: TUTORÍA - VARIANTES Y PREGUNTAS ADICIONALES
+================================================================
+
+P: ¿Para qué sirve la tutoría?
+R: La tutoría sirve para acompañarte académica y personalmente durante toda tu carrera. Tu tutor te ayuda a organizar tu tiempo, orientarte en tus cursos, superar dificultades, y si lo necesitas, te deriva a servicios especializados como Bienestar Universitario. No es solo para cuando tienes problemas, cualquier estudiante puede beneficiarse.
+
+P: ¿Es obligatorio asistir a la tutoría?
+R: Depende de tu situación. Si tu matrícula es condicionada (por haber jalado cursos), la tutoría es obligatoria. Para el resto de estudiantes es un derecho y se recomienda ampliamente, pero no es obligatoria. Recuerda que para matricularte con matrícula condicionada necesitas el visto bueno de tu tutor.
+
+P: ¿Cuántas veces me reúno con el tutor al semestre?
+R: Como mínimo tres veces por semestre: al inicio del ciclo, después del primer examen parcial, y una semana antes de que termine el semestre. Si necesitas más reuniones, puedes pedirlas, y tu tutor también puede citarte cuando lo considere necesario.
+
+P: ¿Qué pasa si mi tutor me cita y no voy?
+R: Si tienes matrícula condicionada y no asistes a las sesiones de tutoría, puede afectar la autorización que necesitas del Decano para matricularte el siguiente semestre. Se recomienda siempre asistir y justificar cualquier inasistencia.
+
+P: ¿Mi tutor puede expulsarme de la carrera?
+R: No. Tu tutor no tiene poder para expulsarte. Sí puede influir en que el Decano no autorice tu matrícula si tienes matrícula condicionada y no cumples con las sesiones de tutoría. La separación de la carrera solo ocurre por razones académicas específicas (jalar el mismo curso 4 veces).
+
+P: ¿Quién asigna al tutor?
+R: El Comité Tutorial de tu Escuela Profesional asigna a los tutores. En general, la ratio es de máximo 25 estudiantes por tutor. La asignación se hace al inicio de cada ciclo académico.
+
+================================================================
+SECCIÓN 15: INTELIGENCIA ARTIFICIAL Y CURSOS ESPECÍFICOS
+================================================================
+
+P: ¿En qué semestre llevo Inteligencia Artificial?
+R: El curso de Inteligencia Artificial se lleva en el **sexto semestre**. Tiene 4 créditos y su prerrequisito es Álgebra Lineal Computacional (del tercer semestre).
+
+P: ¿Cuál es el prerrequisito de Inteligencia Artificial?
+R: El prerrequisito de Inteligencia Artificial es **Álgebra Lineal Computacional**, que se lleva en el tercer semestre.
+
+P: ¿En qué semestre llevo Aprendizaje Automático?
+R: Aprendizaje Automático (Machine Learning) se lleva en el **séptimo semestre**, con 4 créditos. Su prerrequisito es el curso de Inteligencia Artificial del sexto semestre.
+
+P: ¿En qué semestre llevo Aprendizaje Profundo?
+R: Aprendizaje Profundo (Deep Learning) se lleva en el **octavo semestre**, con 4 créditos. Su prerrequisito es Aprendizaje Automático del séptimo semestre.
+
+P: ¿En qué semestre llevo Redes de Computadoras?
+R: Redes de Computadoras I se lleva en el **séptimo semestre** (4 créditos, prerrequisito: Sistemas Operativos). Redes de Computadoras II se lleva en el **octavo semestre** (4 créditos, prerrequisito: Redes I).
+
+P: ¿En qué semestre llevo Ciberseguridad?
+R: Ciberseguridad se lleva en el **noveno semestre**, con 4 créditos. Su prerrequisito es Redes de Computadoras II (octavo semestre).
+
+P: ¿Cuándo se lleva Sistemas Operativos?
+R: Sistemas Operativos se lleva en el **sexto semestre**, con 4 créditos. Su prerrequisito es Organización y Arquitectura del Computador (quinto semestre).
+
+P: ¿Qué cursos de programación tiene la carrera?
+R: La carrera tiene una secuencia de cursos de programación:
+- **Fundamentos de Programación** (2.° semestre, sin prerrequisito)
+- **Programación I** (3.° semestre, prerrequisito: Fundamentos de Programación)
+- **Programación II** (4.° semestre)
+- **Programación III** (5.° semestre)
+Además hay cursos relacionados como Algoritmos y Estructuras de Datos I y II, y cursos electivos como Desarrollo de Aplicaciones Web y Móviles.
+
+P: ¿Qué es Pensamiento Computacional e IA?
+R: Es un curso del segundo semestre con 3 créditos, sin prerrequisito. Introduce conceptos básicos de pensamiento algorítmico e inteligencia artificial, sirviendo como base para los cursos más avanzados de IA en semestres posteriores.
+
+P: ¿Cuándo llevo Ciencia de Datos?
+R: Ciencia de Datos se lleva en el **séptimo semestre**, con 3 créditos. Su prerrequisito es el curso de Inteligencia Artificial (sexto semestre).
+
+P: ¿Cuándo llevo Metodología y Desarrollo de Software?
+R: Metodología y Desarrollo de Software se lleva en el **séptimo semestre**, con 5 créditos (el curso con más créditos junto con las Prácticas). Su prerrequisito es Fundamentos y Diseño de Base de Datos (sexto semestre).
+
+P: ¿Cuándo llevo Ingeniería de Software?
+R: Ingeniería de Software I se lleva en el **octavo semestre** (4 créditos, prerrequisito: Metodología y Desarrollo de Software). Ingeniería de Software II se lleva en el **noveno semestre** (4 créditos, prerrequisito: Ingeniería de Software I).
+
+P: ¿Cuándo llevo Bases de Datos?
+R: El curso de Fundamentos y Diseño de Base de Datos se lleva en el **sexto semestre**, con 4 créditos. Su prerrequisito es Análisis y Diseño de Sistemas de Información (quinto semestre).
+
+================================================================
+SECCIÓN 16: TRÁMITES Y GESTIONES ACADÉMICAS
+================================================================
+
+P: ¿Cómo pido una constancia de matrícula?
+R: Puedes solicitar tu constancia de matrícula a través del sistema en línea de la UNSAAC (PLADDES) con tu código de estudiante. También puedes solicitarla en la ventanilla de la Dirección de Escuela Profesional. Normalmente se emite de forma inmediata o en 1 día hábil.
+
+P: ¿Qué es PLADDES?
+R: PLADDES es el sistema de gestión académica en línea de la UNSAAC. Desde ahí puedes realizar tu matrícula, descargar constancias, revisar tu récord académico, postular a apoyos de Bienestar Universitario y hacer otros trámites sin necesidad de ir presencialmente.
+
+P: ¿Cómo solicito una evaluación de sustitución?
+R: Debes presentar una solicitud a tu docente dentro de los 30 días de publicada tu nota. Si la nueva nota que sacas es mayor, reemplaza a la anterior. Si es menor, se mantiene tu nota original. Es una oportunidad para mejorar tu calificación sin riesgo.
+
+P: ¿Qué documentos necesito para graduarme de bachiller?
+R: Para el grado de Bachiller necesitas: solicitud dirigida al Rector, ficha de seguimiento académico, DNI vigente, certificación de idioma extranjero, certificado de computación (del Instituto de Sistemas Cusco o CCI-UNSAAC), y el pago por derecho de grado. Todos los créditos del plan de estudios deben estar aprobados (220 créditos).
+
+P: ¿Necesito saber inglés para graduarme?
+R: Sí. Para obtener el grado de Bachiller necesitas presentar una certificación de idioma extranjero (generalmente inglés). Puedes obtenerla en los centros de idiomas de la UNSAAC o en institutos certificados.
+
+P: ¿Necesito un certificado de computación para graduarme?
+R: Sí. Para el grado de Bachiller necesitas un certificado de computación emitido por el Instituto de Sistemas Cusco o el CCI-UNSAAC (Centro de Computación e Informática de la UNSAAC).
+
+P: ¿Cómo es el examen de suficiencia profesional?
+R: Es una de las modalidades de titulación. Consiste en un examen oral de mínimo 2 horas sobre temas de tu especialidad, ante un jurado de docentes. Es una alternativa a la tesis para obtener el Título Profesional.
+
+P: ¿Cuánto dura la sustentación de tesis?
+R: La sustentación de tesis tiene dos partes: exposición oral (máximo 45 minutos para tesis individual, 60 minutos para tesis en grupo) y evaluación del jurado. La nota final es el promedio de las notas de los jurados. Necesitas sacar 14 o más para aprobar.
+
+P: ¿Qué pasa si desapruebo la tesis?
+R: Puedes pedir una nueva fecha de sustentación después de 30 días calendario. Si vuelves a desaprobar, debes esperar al menos 6 meses para una nueva oportunidad.
+
+================================================================
+SECCIÓN 17: CONTACTOS Y RECURSOS ÚTILES
+================================================================
+
+P: ¿Cuál es el teléfono de Bienestar Universitario?
+R: Puedes comunicarte con la Oficina de Bienestar Universitario al: **084-232398** o **084-222271**. La oficina está ubicada en la Av. De la Cultura 733, Cusco, en el Pabellón de Bienestar Universitario.
+
+P: ¿Dónde está la oficina de relaciones internacionales de la UNSAAC?
+R: La Oficina de Cooperación y Relaciones Internacionales (OCRI) se encuentra en el **8.° piso del Pabellón de Rectoría** de la UNSAAC. Es la oficina que gestiona los programas de movilidad estudiantil e intercambios internacionales.
+
+P: ¿Cómo contacto a la Dirección de Escuela Profesional?
+R: La Dirección de la Escuela Profesional de Ingeniería Informática y de Sistemas está en el campus principal de la UNSAAC, dentro del edificio de la FIEEIM. Puedes acercarte presencialmente durante el horario de atención o comunicarte a través de los canales oficiales de la facultad.
+
+P: ¿Dónde está Asistencia Social?
+R: La Unidad de Asistencia Social de Bienestar Universitario está en el **Pabellón de Bienestar Universitario, 1er piso**, campus principal de la UNSAAC (Av. De la Cultura 733, Cusco). Ahí debes presentar tu expediente para postular a los apoyos económicos.
+
+================================================================
+FIN DEL CORPUS
+================================================================
